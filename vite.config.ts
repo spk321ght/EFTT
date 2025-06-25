@@ -1,15 +1,16 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  root: '.',
   build: {
     outDir: 'dist',
-    assetsDir: 'assets',
-    sourcemap: false,
-  },
-  optimizeDeps: {
-    exclude: ['lucide-react'],
-  },
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: './index.html'
+      }
+    }
+  }
 });
